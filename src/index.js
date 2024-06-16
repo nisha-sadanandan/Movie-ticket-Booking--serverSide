@@ -1,0 +1,57 @@
+import express from 'express'
+import cors from'cors'
+import cookieParser from 'cookie-parser'
+import userRouter from '../routes/userRoutes.js'
+import { connect } from '../config/db.js'
+import  movieRouter from '../routes/movieRoutes.js'
+import bookingRouter from '../routes/bookingRoutes.js'
+import theaterRouter from '../routes/theaterRoutes.js'
+import adminRouter from '../routes/adminRoute.js'
+import showRouter from '../routes/showRoute.js'
+import paymentRouter from "../routes/paymentRoute.js"
+
+
+
+const app = express();
+
+app.use(
+  cors()
+);
+
+
+
+// app.use(
+//   cors({
+//     origin: "http://localhost:5173",
+//     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE'
+  
+//   })
+// );
+
+
+
+
+
+
+app.use(express.json())
+app.use(cookieParser())
+
+
+app.use("/api/v1/users",userRouter)
+app.use("/api/v1/movie",movieRouter)
+app.use("/api/v1/booking",bookingRouter)
+app.use("/api/v1/theater",theaterRouter)
+app.use("/api/v1/admin",adminRouter)
+app.use("/api/v1/show",showRouter)
+app.use("/api/v1/payment",paymentRouter)
+const port = 3000;
+connect();
+
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
