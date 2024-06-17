@@ -15,18 +15,9 @@ import ownerRouter from '../routes/ownerRoute.js'
 
 const app = express();
 
-app.use(
-  cors()
-);
-
-
-
-
-
-
-
-
-
+app.use(cors({
+  origin: ['http://localhost:5173', 'https://rad-griffin-f641dc.netlify.app']
+}));
 
 app.use(express.json())
 app.use(cookieParser())
