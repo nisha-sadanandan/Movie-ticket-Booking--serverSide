@@ -4,37 +4,19 @@ import mongoose from "mongoose";
 const theaterSchema = new mongoose.Schema({
    
    theatername:{
-    type:String
+    type:String,
+    required:true,
 
    
    },
 
    location:{
-    type:String
+    type:String, 
+    required:true,
   
   
    },
-
-   role:{
-      type:String,
-      enum:["owner"]
-    },
-
-    name:{
-      type:String
-     
-    },
-
-    email:{
-      type:String,
-      unique: true,
-    
-    },
-    hashpassword:{
-      type:String,
-      minLength: 6,
-    
-    },
+ 
 
    show: [{ type: mongoose.Types.ObjectId, ref: "Show" }],
 

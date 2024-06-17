@@ -9,6 +9,7 @@ import theaterRouter from '../routes/theaterRoutes.js'
 import adminRouter from '../routes/adminRoute.js'
 import showRouter from '../routes/showRoute.js'
 import paymentRouter from "../routes/paymentRoute.js"
+import ownerRouter from '../routes/ownerRoute.js'
 
 
 
@@ -20,13 +21,7 @@ app.use(
 
 
 
-// app.use(
-//   cors({
-//     origin: "http://localhost:5173",
-//     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE'
-  
-//   })
-// );
+
 
 
 
@@ -44,6 +39,7 @@ app.use("/api/v1/theater",theaterRouter)
 app.use("/api/v1/admin",adminRouter)
 app.use("/api/v1/show",showRouter)
 app.use("/api/v1/payment",paymentRouter)
+app.use("/api/v1/owner",ownerRouter)
 const port = 3000;
 connect();
 
