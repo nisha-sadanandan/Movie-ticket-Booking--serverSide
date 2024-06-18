@@ -108,7 +108,7 @@ import { adminToken } from "../utils/generateToken.js"
 
  export const addShowByAdmin = async (req,res)=>{
 
-  const {theatername,title,showtime,date,price} = req.body;
+  const {theatername,location,title,showtime,date,price} = req.body;
 
   try {
       
@@ -122,7 +122,7 @@ import { adminToken } from "../utils/generateToken.js"
         res.send("invalid Theater")
       }
       
-        const newshows = new Show({theatername,title,showtime,date,price})
+        const newshows = new Show({theatername,location,title,showtime,date,price})
 
        const addedShow = await newshows.save()
         res.send(addedShow)

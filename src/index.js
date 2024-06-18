@@ -14,6 +14,7 @@ import ownerRouter from '../routes/ownerRoute.js'
 
 
 const app = express();
+
 app.use(cors()); 
 
 

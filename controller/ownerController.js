@@ -104,26 +104,18 @@ export const addTheater = async(req,res)=>{
 
 export const addShowByOwner = async(req,res)=>{
 
-    const {movieid, showtime ,date, price} = req.body;
+    const {title,theatername, showtime ,date, price,location} = req.body;
        
-    const theaterid = req.params.id
 
-
-    const theater = await Theater.findById(theaterid);
-    if (!theater || theater.ownerId) {
-      return res.status(400).json({ message: 'Invalid theater or permission denied' });
-    }
-  
     try {
       
-      const movie = await Movie.findById(movieid);
+      const movie = await Movie.find();
       if (!movie) {
         return res.status(400).json({ message: 'Invalid movie' });
       }
      
      const newShow = new Show({
-        movieid, showtime ,date,price
-     })
+        title,showtime ,date,price,location,theatername})
      
      const addedShow = await newShow.save()
 
