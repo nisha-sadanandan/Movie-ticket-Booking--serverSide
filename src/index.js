@@ -14,30 +14,7 @@ import ownerRouter from '../routes/ownerRoute.js'
 
 
 const app = express();
-
-const allowedOrigin = ['https://showtime-20204.netlify.app','http://localhost:3000']
-
-
-const corsOptions = {
-  origin: allowedOrigin,
-  credentials: true, 
-};
-
-app.use(cors(corsOptions)); 
-
-// var whitelist = ['http://localhost:5173', 'https://showtime-20204.netlify.app']
-
-// var corsOptions = {
-//   origin: function (origin, callback) {
-//     if (whitelist.indexOf(origin) !== -1) {
-//       callback(null, true)
-//     } else {
-//       callback(new Error('Not allowed by CORS'))
-//     }
-//   },
-//   credentials: true,
-// }
-
+app.use(cors()); 
 
 
 app.use(express.json())
