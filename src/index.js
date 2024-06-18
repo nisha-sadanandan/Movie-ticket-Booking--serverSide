@@ -15,9 +15,22 @@ import ownerRouter from '../routes/ownerRoute.js'
 
 const app = express();
 
-app.use(cors({
-  origin: ['http://localhost:5173', 'https://rad-griffin-f641dc.netlify.app']
-}));
+var whitelist = ['http://localhost:5173', 'https://showtime-20204.netlify.app']
+
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  },
+  credentials: true,
+}
+
+// app.use(cors({
+//   origin: ['http://localhost:5173', 'https://showtime-20204.netlify.app/']
+// }));
 
 app.use(express.json())
 app.use(cookieParser())
