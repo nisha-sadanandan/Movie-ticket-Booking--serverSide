@@ -28,9 +28,7 @@ var corsOptions = {
   credentials: true,
 }
 
-// app.use(cors({
-//   origin: ['http://localhost:5173', 'https://showtime-20204.netlify.app/']
-// }));
+app.use(cors(corsOptions))
 
 app.use(express.json())
 app.use(cookieParser())
