@@ -18,11 +18,12 @@ export const getAllShow = async (req,res)=>{
 
 export  const getMovieShow = async(req,res)=>{
 
-    const movieid =req.params.id
+    const title =req.params.title
     try {
         
-        const show = await Show.find({movieid})
-        res.send(show).status(200)     
+        const show = await Show.find(title)
+        res.send(show).status(200)  
+        console.log(show)   
         
     } catch (error) {
 

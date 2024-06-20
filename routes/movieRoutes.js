@@ -19,8 +19,11 @@ movieRouter.put("/update-movie/:id",updateMovie)
 
 movieRouter.delete("/delete-movie/:id",deleteMovie)
 
-movieRouter.post("/add-review",addReview)
+movieRouter.post("/:id/add-review",addReview)
 
-movieRouter.get("/get-review/:id",getReviewOfMovie)
+movieRouter.get("/:id/get-review",getReviewOfMovie)
+
+
+
 
 export default  movieRouter

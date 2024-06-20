@@ -20,7 +20,11 @@ const theaterSchema = new mongoose.Schema({
 
    show: [{ type: mongoose.Types.ObjectId, ref: "Show" }],
 
-})
+},
+
+{timestamps:true}
+
+)
 
 const Theater = mongoose.model("Theater",theaterSchema)
 

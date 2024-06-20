@@ -25,7 +25,10 @@ const ownerSchema = new mongoose.Schema({
 
    theater: [{ type: mongoose.Types.ObjectId, ref: "Theater" }],
 
-})
+},
+
+{timestamps:true}
+)
 
 const Owner = mongoose.model("Owner",ownerSchema)
 

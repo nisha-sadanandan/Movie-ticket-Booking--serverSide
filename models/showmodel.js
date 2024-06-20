@@ -14,6 +14,12 @@ const showSchema = new mongoose.Schema({
       
    },
 
+   location:{
+      type:String,
+      required:true,
+      
+   },
+
      showtime:{
         type:String,
         required:true,
@@ -31,7 +37,10 @@ const showSchema = new mongoose.Schema({
 
      theater: [{ type: mongoose.Types.ObjectId, ref: "Theater" }],
 
-})
+},
+
+{timestamps:true}
+)
 
 const Show = mongoose.model("Show",showSchema)
 

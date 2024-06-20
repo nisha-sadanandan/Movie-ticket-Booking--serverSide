@@ -41,7 +41,11 @@ import mongoose from "mongoose";
 
      user:[{ type: mongoose.Types.ObjectId, ref: "User" }],
 
-    })
+    },
+
+    {timestamps:true}
+   
+   )
 
     const Booking = mongoose.model("Booking",bookingSchema)
 

@@ -30,7 +30,7 @@ const movieSchema = new mongoose.Schema(
 
          theater: [{ type: mongoose.Types.ObjectId, ref: "Theater" }],
       },
-    
+      {timestamps:true}
 )
 
 const Movie = mongoose.model("Movie",movieSchema)
