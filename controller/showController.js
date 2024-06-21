@@ -21,7 +21,7 @@ export  const getMovieShow = async(req,res)=>{
     const title =req.params.title
     try {
         
-        const show = await Show.find(title)
+        const show = await Show.find({title})
         res.send(show).status(200)  
         console.log(show)   
         

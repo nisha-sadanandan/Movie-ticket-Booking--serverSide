@@ -3,6 +3,7 @@ import { cloudinaryInstance } from "../config/cloudinary.js"
 
 
 
+
 export const addMovie = async (req,res)=>{
 
     try {
@@ -124,3 +125,21 @@ export const deleteMovie = async(req,res)=>{
   return res.send("movie deletion completed")
 }
 
+
+
+export  const getMovieShow = async(req,res)=>{
+
+  const title =req.params.title
+  try {
+      
+      const show = await Show.find({title})
+      res.send(show).status(200)  
+      console.log(show)   
+      
+  } catch (error) {
+
+      console.log(error)
+      res.send("sever error")
+      
+  }
+}

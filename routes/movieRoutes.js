@@ -6,6 +6,7 @@ import { addReview,getReviewOfMovie} from "../controller/reviewController.js";
 
 
 
+
 const movieRouter = express.Router();
 
 
@@ -22,6 +23,8 @@ movieRouter.delete("/delete-movie/:id",deleteMovie)
 movieRouter.post("/:id/add-review",addReview)
 
 movieRouter.get("/:id/get-review",getReviewOfMovie)
+
+
 
 
 
