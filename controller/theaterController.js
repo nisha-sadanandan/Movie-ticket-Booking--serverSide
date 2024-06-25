@@ -1,4 +1,5 @@
 import Theater from "../models/theatermodel.js";
+import Show from "../models/showmodel.js"
 
    
 
@@ -64,6 +65,7 @@ export const getTheaterById = async (req,res)=>{
    
      
 }
+
 
 
 

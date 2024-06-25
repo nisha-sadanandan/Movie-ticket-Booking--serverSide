@@ -16,7 +16,7 @@ import mongoose from "mongoose";
 
    
      seat:{
-      type:[String],
+      type:[],
       required:true,
    },
 

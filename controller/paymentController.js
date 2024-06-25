@@ -8,7 +8,7 @@ dotenv.config();
 
 
 
-export const paymentOrder = async (req, res) => {
+export const paymentorder = async (req, res) => {
   const { amount } = req.body;
 
   try {
@@ -35,7 +35,7 @@ export const paymentOrder = async (req, res) => {
 
 
 
-export const paymentVerify = async (req, res) => {
+export const paymentverify = async (req, res) => {
   console.log("very hitted");
 
   const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
