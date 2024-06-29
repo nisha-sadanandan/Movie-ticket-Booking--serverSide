@@ -69,52 +69,6 @@ export const getTicket = async(req,res)=>{
 
 
 
-         export const purchaseTicket =async(req,res)=>{
-             
-          const { showid, seat, paymentmethod } = req.body;
-        
-        
-          try {
-            
-            const existingBooking = await Booking.findOne({  show: showid, seat: { $all: seat}, status: 'Reserved' });
-            if (!existingBooking) {
-              return res.status(400).json({ message: 'Seats not reserved or reservation expired' });
-            }
-        
-            if (existingBooking.expiresAt < Date.now()) {
-              await Booking.deleteOne({ _id: existingBooking._id }); 
-              return res.status(400).json({ message: 'Reservation expired. Please select seats again' });
-            }
-        
-          
-            if (paymentmethod !== 'razorpay') {
-              return res.status(400).json({ message: 'Unsupported payment method' });
-            }
-        
-            const options = {
-              amount: existingBooking.totalprice,
-              currency: 'INR',
-              receipt: `booking_${existingBooking._id}`, 
-              payment_capture: 1, 
-            };
-        
-            try {
-              const order = await razorpayInstance.orders.create(options);
-        
-              existingBooking.razorpayOrderId = order.id;
-              await existingBooking.save();
-        
-              res.send({ message: 'Order created successfully!', order }).status(201)
-            } catch (error) {
-              console.log(error)
-              res.send("order creation failed")
-        }
-
-      } catch (error) {
-        console.log(error)
-        res.send("server error")
-  }
-      }
 
 
         
