@@ -11,7 +11,7 @@ function authuser(req, res, next) {
    req.userId = decoded.userId;
    next();
    } catch (error) {
-   res.json({ error: 'Access denied' }).status(401);
+   res.send({ error: 'Access denied' }).status(401);
    }
    };
   

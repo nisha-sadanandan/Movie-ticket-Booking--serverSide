@@ -15,7 +15,7 @@ import ownerRouter from '../routes/ownerRoute.js'
 
 const app = express();
 
-const allowedOrigins = ['http://localhost:5173', 'https://showtime-20204.netlify.app'];
+const allowedOrigins = ['http://localhost:5173', 'https://showtime2024.netlify.app'];
 
 const corsOptions = {
     origin: function (origin, callback) {
