@@ -73,30 +73,64 @@ export const ownerSignup = async(req,res)=>{
   
 
    
-export const addTheater = async(req,res)=>{
+// export const addTheater = async(req,res)=>{
 
-    try {
+//   const {theatername,location} = req.body;
+
+//     try {
        
-        const {theatername,location} = req.body;
+//         const existingTheater = await Theater.findOne({theatername,location})
+//         if(existingTheater){
+//           return res.send("theater exist")
+//       }
 
-        const newTheater = new Theater({
-            theatername,
-            location,   
-        })
+//         const newTheater = new Theater({
+//             theatername,
+//             location,   
+//         })
 
-        const addedTheater = await newTheater.save()
+//         const addedTheater = await newTheater.save()
        
 
-        if(!addTheater){
-            return res.send("Theater addition failed")
-        }
-        return res.send(addedTheater )
+//         if(!addTheater){
+//             return res.send("Theater addition failed")
+//         }
+//         return res.send(addedTheater )
         
-    } catch (error) {
-        console.log("something went wrong", error);
-       res.send("failed to add theater");
+//     } catch (error) {
+//         console.log("something went wrong", error);
+//        res.send("failed to add theater");
 
+//     }
+// }
+
+
+
+
+export const addTheater = async (req, res) => {
+  const { theatername, location } = req.body;
+
+  try {
+    const existingTheater = await Theater.findOne({ theatername, location });
+    if (existingTheater) {
+      return res.status(400).send("Theater already exists");
     }
+
+    const newTheater = new Theater({
+      theatername,
+      location,
+    });
+
+    const addedTheater = await newTheater.save();
+
+    if (!addedTheater) {
+      return res.status(500).send("Theater addition failed");
+    }
+    return res.status(201).send(addedTheater);
+  } catch (error) {
+    console.log("Something went wrong", error);
+    res.status(500).send("Failed to add theater");
+  }
 }
 
   
@@ -112,6 +146,13 @@ export const addShowByOwner = async(req,res)=>{
       const movie = await Movie.find();
       if (!movie) {
         return res.status(400).json({ message: 'Invalid movie' });
+      }
+
+
+      const existingShow = await Show.findOne({title,showtime,date,theatername})
+
+      if(existingShow){
+          return res.send("you already added show")
       }
      
      const newShow = new Show({

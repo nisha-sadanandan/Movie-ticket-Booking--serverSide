@@ -71,3 +71,17 @@ export const login = async (req, res)=>{
     res.status(500).send("Internal Server Error");
   }
 }
+
+export const getUser = async (req,res)=>{
+  try {
+  
+    const users = await User.find()
+    res.send(users).status(200)
+    
+  } catch (error) {
+  
+    console.log("something went wrong")
+        req.send("server error")
+  }
+    
+  }
