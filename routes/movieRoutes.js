@@ -1,7 +1,7 @@
 import express from "express"
 import {addMovie,getMovie,updateMovie,deleteMovie, getMovieById} from "../controller/movieController.js"
 import upload from  "../middleware/upload.js"
-import { addReview,getReviewOfMovie} from "../controller/reviewController.js";
+import { addReview,getReviewOfMovie,checkUserReview,getReviewByUsername} from "../controller/reviewController.js";
 
 
 
@@ -23,6 +23,12 @@ movieRouter.delete("/delete-movie/:id",deleteMovie)
 movieRouter.post("/:id/add-review",addReview)
 
 movieRouter.get("/:id/get-review",getReviewOfMovie)
+
+movieRouter.get("/check-review/:movieid",checkUserReview)
+
+movieRouter.get("/:movieid/get-review/:username",getReviewByUsername)
+
+
 
 
 

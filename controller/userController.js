@@ -63,7 +63,7 @@ export const login = async (req, res)=>{
 
     const token = generateToken(email);
     res.cookie("token", token);
-    res.send("Logged in!");
+    res.send("Logged in!").status(200);
     
   } catch (error) {
     

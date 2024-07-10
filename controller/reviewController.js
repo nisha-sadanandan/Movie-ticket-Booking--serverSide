@@ -59,3 +59,41 @@ export const getReviewOfMovie = async (req,res)=>{
         res.send("server error")
     }
 }
+
+
+
+export const getReviewByUsername = async (req,res)=>{
+
+
+    const username =req.params.username;
+
+    try {
+      const getReview = await Review.find({username})
+      res.send(getReview)   
+      console.log(getReview) 
+    
+
+    } catch (error) {
+        console.log("error")
+        res.send("server error")
+    }
+}
+
+export const checkUserReview = async (req, res) => {
+    try {
+      const { movieid } = req.params;
+      const { username } = req.body;
+  
+      const review = await Review.findOne({ movieId: movieid, username: username });
+  
+      if (review) {
+        return res.send("alreadyRated");
+      }
+  
+      return res.send("review submitted");
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+    }
+  };
+  
