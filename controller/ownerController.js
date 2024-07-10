@@ -113,7 +113,7 @@ export const addTheater = async (req, res) => {
   try {
     const existingTheater = await Theater.findOne({ theatername, location });
     if (existingTheater) {
-      return res.status(400).send("Theater already exists");
+      return res.status(400).send("theater already exists");
     }
 
     const newTheater = new Theater({
@@ -124,9 +124,9 @@ export const addTheater = async (req, res) => {
     const addedTheater = await newTheater.save();
 
     if (!addedTheater) {
-      return res.status(500).send("Theater addition failed");
+      return res.status(500).send("theater addition failed");
     }
-    return res.status(201).send(addedTheater);
+    return res.status(201).send("theater added suceessfully");
   } catch (error) {
     console.log("Something went wrong", error);
     res.status(500).send("Failed to add theater");
